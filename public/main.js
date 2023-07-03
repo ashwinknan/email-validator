@@ -1,7 +1,7 @@
 const emailForm = document.getElementById('emailForm');
-const emailInput = document.getElementById('emailInput');
-const submitButton = document.getElementById('submitButton');
-const result = document.getElementById('result');
+const emailInput = document.getElementById('email'); // Corrected this line
+const submitButton = emailForm.querySelector('button'); // Corrected this line
+const result = document.getElementById('response'); // Corrected this line
 
 emailInput.addEventListener('input', function() {
     const email = emailInput.value;
@@ -28,6 +28,11 @@ emailForm.addEventListener('submit', function(e) {
             result.textContent = data.error;
         } else {
             result.textContent = 'Your ID: ' + data.id;
+            // If you want the user to be able to copy the ID to clipboard
+            //result.textContent = 'Your ID: ' + data.id + ' (click to copy)';
+            //result.addEventListener('click', function() {
+            //    navigator.clipboard.writeText(data.id);
+            //});
         }
     });
 });
